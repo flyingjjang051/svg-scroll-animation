@@ -189,6 +189,53 @@
       </div>
       <div class="title" data-splitting>TO THE UNKNOWN MAN</div>
     </div>
-    <script></script>
+    <script>
+      Splitting();
+      $(".cls-5").each(function (idx, item) {
+        item.style.strokeDasharray = item.getTotalLength();
+        item.style.strokeDashoffset = item.getTotalLength();
+        console.log(item.style.strokeDasharray);
+      });
+      const manTL = gsap.timeline({
+        repeat: -1,
+        repeatDelay: 5,
+      });
+      manTL
+        .from("#mainVisual .svgBox", {
+          y: "-150%",
+          ease: "bounce",
+          duration: 1.5,
+        })
+        .to("#mainVisual .cls-5", {
+          strokeDashoffset: 0,
+          duration: function (idx, item) {
+            return Math.max(item.style.strokeDasharray / 2000, 0.25);
+          },
+        })
+        .from("#mainVisual .cls-1", {
+          fill: "transparent",
+          duration: 0.5,
+        })
+        .from("#mainVisual .cls-2", {
+          fill: "transparent",
+          duration: 0.5,
+        })
+        .from("#mainVisual .cls-3", {
+          fill: "transparent",
+          duration: 0.5,
+        })
+        .from("#mainVisual .cls-4", {
+          fill: "transparent",
+          duration: 0.5,
+        })
+        .from("#mainVisual .title .char", {
+          y: 100,
+          opacity: 0,
+          ease: "power4",
+          stagger: {
+            each: 0.1,
+          },
+        });
+    </script>
   </body>
 </html>

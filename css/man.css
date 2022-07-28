@@ -27,6 +27,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-weight: 900;
+  overflow: hidden;
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
   font-family: "Nunito";
 }
